@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'Num_Competence',
-            'Libelle_Competence',
+            'Libelle_Competence:ntext',
         ],
     ]) ?>
 

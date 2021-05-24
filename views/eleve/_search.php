@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'Num_Eleve') ?>
+    <?= $form->field($model, 'Num_eleve') ?>
 
     <?= $form->field($model, 'Nom_Eleve') ?>
 
@@ -30,6 +30,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'Ville_Eleve') ?>
 
     <?php // echo $form->field($model, 'Code_Postal_Eleve') ?>
+
+    <?php // echo $form->field($model, 'Num_Classe') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

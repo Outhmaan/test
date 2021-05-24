@@ -8,10 +8,11 @@ use Yii;
  * This is the model class for table "enseignant".
  *
  * @property int $Num_Enseignant
- * @property string $Nom_Enseignant
- * @property string $Prénom_Enseignant
+ * @property string $Nom
+ * @property string $Prenom
  *
  * @property Enseigne[] $enseignes
+ * @property Classe[] $numClasses
  */
 class Enseignant extends \yii\db\ActiveRecord
 {
@@ -29,10 +30,8 @@ class Enseignant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Num_Enseignant', 'Nom_Enseignant', 'Prénom_Enseignant'], 'required'],
-            [['Num_Enseignant'], 'integer'],
-            [['Nom_Enseignant', 'Prénom_Enseignant'], 'string'],
-            [['Num_Enseignant'], 'unique'],
+            [['Nom', 'Prenom'], 'required'],
+            [['Nom', 'Prenom'], 'string'],
         ];
     }
 
@@ -43,8 +42,8 @@ class Enseignant extends \yii\db\ActiveRecord
     {
         return [
             'Num_Enseignant' => 'Num Enseignant',
-            'Nom_Enseignant' => 'Nom Enseignant',
-            'Prénom_Enseignant' => 'Prénom Enseignant',
+            'Nom' => 'Nom',
+            'Prenom' => 'Prenom',
         ];
     }
 
@@ -56,5 +55,15 @@ class Enseignant extends \yii\db\ActiveRecord
     public function getEnseignes()
     {
         return $this->hasMany(Enseigne::className(), ['Num_Enseignant' => 'Num_Enseignant']);
+    }
+
+    /**
+     * Gets query for [[NumClasses]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNumClasses()
+    {
+        return $this->hasMany(Classe::className(), ['Num_Classe' => 'Num_Classe'])->viaTable('enseigne', ['Num_Enseignant' => 'Num_Enseignant']);
     }
 }

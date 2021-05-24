@@ -12,15 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'Num_Etablissement')->textInput() ?>
-
     <?= $form->field($model, 'Ville')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'Region')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'Région')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'Pays')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'Num_Classe')->textInput() ?>
+    <?= $form->field($model, 'Num_Classe')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

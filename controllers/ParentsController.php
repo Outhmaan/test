@@ -8,6 +8,10 @@ use app\models\ParentsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+
 
 /**
  * ParentsController implements the CRUD actions for Parents model.
@@ -124,4 +128,35 @@ class ParentsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+	
+	public function actionGenPdf($id)
+	{
+		
+		$pdf_content = $this ->renderPartial('view-pdf',['model' => $this ->findModel($id),]);
+		//$mpdf = new \Mpdf\Mpdf();
+		//$mpdf = new mpdf();
+		//$mpdf = new \mPDF();
+		//$mpdf = new \mPDF\mpdf();
+		//$mpdf = new \mPDF('utf-8','A4','');
+		//$mpdf->WriteHTML($pdf_content);
+		//$mpdf->Output();
+		
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml($pdf_content);
+		$dompdf->setPaper('A4', 'landscape');
+		$dompdf->render();
+		$dompdf->stream("Livret de Compétence.pdf", array("Attachment" => true));
+		//$dompdf->stream();
+		
+		/*options = new Options();
+		$options->set('defaultFont', 'Courier');
+		$dompdf = new Dompdf($options);
+		
+
+		$options = $dompdf->getOptions();
+		$options->setDefaultFont('Courier');
+		$dompdf->setOptions($options);*/
+		
+		exit;
+	}
 }

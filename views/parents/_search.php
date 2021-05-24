@@ -25,9 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Rue_Parent') ?>
 
-    <?php // echo $form->field($model, 'Ville_Parent') ?>
-
-    <?php // echo $form->field($model, 'Code_Postal_Parent') ?>
+    <?php // echo $form->field($model, 'Localite_Parent') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

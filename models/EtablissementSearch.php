@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Enseignant;
+use app\models\Etablissement;
 
 /**
- * EnseignantSearch represents the model behind the search form of `app\models\Enseignant`.
+ * EtablissementSearch represents the model behind the search form of `app\models\Etablissement`.
  */
-class EnseignantSearch extends Enseignant
+class EtablissementSearch extends Etablissement
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class EnseignantSearch extends Enseignant
     public function rules()
     {
         return [
-            [['Num_Enseignant'], 'integer'],
-            [['Nom', 'Prenom'], 'safe'],
+            [['Num_Etablissement'], 'integer'],
+            [['Ville', 'Région', 'Pays', 'Num_Classe'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class EnseignantSearch extends Enseignant
      */
     public function search($params)
     {
-        $query = Enseignant::find();
+        $query = Etablissement::find();
 
         // add conditions that should always apply here
 
@@ -58,11 +58,13 @@ class EnseignantSearch extends Enseignant
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'Num_Enseignant' => $this->Num_Enseignant,
+            'Num_Etablissement' => $this->Num_Etablissement,
         ]);
 
-        $query->andFilterWhere(['like', 'Nom', $this->Nom])
-            ->andFilterWhere(['like', 'Prenom', $this->Prenom]);
+        $query->andFilterWhere(['like', 'Ville', $this->Ville])
+            ->andFilterWhere(['like', 'Région', $this->Région])
+            ->andFilterWhere(['like', 'Pays', $this->Pays])
+            ->andFilterWhere(['like', 'Num_Classe', $this->Num_Classe]);
 
         return $dataProvider;
     }

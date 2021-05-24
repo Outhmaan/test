@@ -67,7 +67,7 @@ class EleveController extends Controller
         $model = new Eleve();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Num_Eleve]);
+            return $this->redirect(['view', 'id' => $model->Num_eleve]);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class EleveController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Num_Eleve]);
+            return $this->redirect(['view', 'id' => $model->Num_eleve]);
         }
 
         return $this->render('update', [

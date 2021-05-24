@@ -24,7 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+		
+			<?= Html::a('Generate PDF', ['gen-pdf', 'id' => $model->Num_Parent], ['class' => 'btn btn-primary']) ?>
+			
     </p>
+	
 
     <?= DetailView::widget([
         'model' => $model,
@@ -34,8 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'Prenom_Parent:ntext',
             'Telephone_Parent',
             'Rue_Parent:ntext',
-            'Ville_Parent:ntext',
-            'Code_Postal_Parent',
+            'Localite_Parent',
         ],
     ]) ?>
 

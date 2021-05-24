@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\EleveSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Elève';
+$this->title = 'Eleves';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="eleve-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Ajouter un élève', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Eleve', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'Num_Eleve',
+            'Num_eleve',
             'Nom_Eleve:ntext',
             'Prenom_Eleve:ntext',
             'Date_Naiss_Eleve',
@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Rue_Eleve:ntext',
             //'Ville_Eleve:ntext',
             //'Code_Postal_Eleve',
+            //'Num_Classe',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -17,8 +17,8 @@ class EleveSearch extends Eleve
     public function rules()
     {
         return [
-            [['Num_Eleve', 'Code_Postal_Eleve'], 'integer'],
-            [['Nom_Eleve', 'Prenom_Eleve', 'Date_Naiss_Eleve', 'Lieu_Naiss_Eleve', 'Rue_Eleve', 'Ville_Eleve'], 'safe'],
+            [['Num_eleve', 'Code_Postal_Eleve'], 'integer'],
+            [['Nom_Eleve', 'Prenom_Eleve', 'Date_Naiss_Eleve', 'Lieu_Naiss_Eleve', 'Rue_Eleve', 'Ville_Eleve', 'Num_Classe'], 'safe'],
         ];
     }
 
@@ -58,7 +58,7 @@ class EleveSearch extends Eleve
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'Num_Eleve' => $this->Num_Eleve,
+            'Num_eleve' => $this->Num_eleve,
             'Date_Naiss_Eleve' => $this->Date_Naiss_Eleve,
             'Code_Postal_Eleve' => $this->Code_Postal_Eleve,
         ]);
@@ -67,7 +67,8 @@ class EleveSearch extends Eleve
             ->andFilterWhere(['like', 'Prenom_Eleve', $this->Prenom_Eleve])
             ->andFilterWhere(['like', 'Lieu_Naiss_Eleve', $this->Lieu_Naiss_Eleve])
             ->andFilterWhere(['like', 'Rue_Eleve', $this->Rue_Eleve])
-            ->andFilterWhere(['like', 'Ville_Eleve', $this->Ville_Eleve]);
+            ->andFilterWhere(['like', 'Ville_Eleve', $this->Ville_Eleve])
+            ->andFilterWhere(['like', 'Num_Classe', $this->Num_Classe]);
 
         return $dataProvider;
     }

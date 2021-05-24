@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modelsEtablissementSearch */
+/* @var $model app\models\EtablissementSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Ville') ?>
 
-    <?= $form->field($model, 'Region') ?>
+    <?= $form->field($model, 'Région') ?>
 
     <?= $form->field($model, 'Pays') ?>
 

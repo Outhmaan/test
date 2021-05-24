@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CompetenceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Compétence';
+$this->title = 'Competences';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="competence-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Ajouter une competence', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Competence', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'Num_Competence',
-            'Libelle_Competence',
+            'Libelle_Competence:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

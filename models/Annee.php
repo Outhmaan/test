@@ -8,8 +8,10 @@ use Yii;
  * This is the model class for table "annee".
  *
  * @property int $Num_annee
+ * @property string $Libelle_année
  *
- * @property SeDeroule[] $seDeroules
+ * @property Sederoule[] $sederoules
+ * @property Classe[] $numClasses
  */
 class Annee extends \yii\db\ActiveRecord
 {
@@ -27,9 +29,8 @@ class Annee extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Num_annee'], 'required'],
-            [['Num_annee'], 'integer'],
-            [['Num_annee'], 'unique'],
+            [['Libelle_année'], 'required'],
+            [['Libelle_année'], 'string', 'max' => 50],
         ];
     }
 
@@ -39,17 +40,28 @@ class Annee extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Num_annee' => 'Numéro Année',
+            'Num_annee' => 'Num Annee',
+            'Libelle_année' => 'Libelle Année',
         ];
     }
 
     /**
-     * Gets query for [[SeDeroules]].
+     * Gets query for [[Sederoules]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getSeDeroules()
+    public function getSederoules()
     {
-        return $this->hasMany(SeDeroule::className(), ['Num_annee' => 'Num_annee']);
+        return $this->hasMany(Sederoule::className(), ['Num_Annee' => 'Num_annee']);
+    }
+
+    /**
+     * Gets query for [[NumClasses]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNumClasses()
+    {
+        return $this->hasMany(Classe::className(), ['Num_Classe' => 'Num_Classe'])->viaTable('sederoule', ['Num_Annee' => 'Num_annee']);
     }
 }

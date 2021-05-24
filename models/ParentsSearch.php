@@ -17,8 +17,8 @@ class ParentsSearch extends Parents
     public function rules()
     {
         return [
-            [['Num_Parent', 'Telephone_Parent', 'Code_Postal_Parent'], 'integer'],
-            [['Nom_Parent', 'Prenom_Parent', 'Rue_Parent', 'Ville_Parent'], 'safe'],
+            [['Num_Parent'], 'integer'],
+            [['Nom_Parent', 'Prenom_Parent', 'Telephone_Parent', 'Rue_Parent', 'Localite_Parent'], 'safe'],
         ];
     }
 
@@ -59,14 +59,13 @@ class ParentsSearch extends Parents
         // grid filtering conditions
         $query->andFilterWhere([
             'Num_Parent' => $this->Num_Parent,
-            'Telephone_Parent' => $this->Telephone_Parent,
-            'Code_Postal_Parent' => $this->Code_Postal_Parent,
         ]);
 
         $query->andFilterWhere(['like', 'Nom_Parent', $this->Nom_Parent])
             ->andFilterWhere(['like', 'Prenom_Parent', $this->Prenom_Parent])
+            ->andFilterWhere(['like', 'Telephone_Parent', $this->Telephone_Parent])
             ->andFilterWhere(['like', 'Rue_Parent', $this->Rue_Parent])
-            ->andFilterWhere(['like', 'Ville_Parent', $this->Ville_Parent]);
+            ->andFilterWhere(['like', 'Localite_Parent', $this->Localite_Parent]);
 
         return $dataProvider;
     }

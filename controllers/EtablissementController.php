@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Etablissement;
-use app\modelsEtablissementSearch;
+use app\models\EtablissementSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class EtablissementController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new modelsEtablissementSearch();
+        $searchModel = new EtablissementSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

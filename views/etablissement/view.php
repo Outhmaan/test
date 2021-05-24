@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'Num_Etablissement',
             'Ville:ntext',
-            'Region:ntext',
+            'Région:ntext',
             'Pays:ntext',
             'Num_Classe',
         ],

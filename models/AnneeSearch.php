@@ -18,6 +18,7 @@ class AnneeSearch extends Annee
     {
         return [
             [['Num_annee'], 'integer'],
+            [['Libelle_année'], 'safe'],
         ];
     }
 
@@ -59,6 +60,8 @@ class AnneeSearch extends Annee
         $query->andFilterWhere([
             'Num_annee' => $this->Num_annee,
         ]);
+
+        $query->andFilterWhere(['like', 'Libelle_année', $this->Libelle_année]);
 
         return $dataProvider;
     }

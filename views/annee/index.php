@@ -7,14 +7,15 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AnneeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Années';
+$this->title = 'Annees';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="annee-index">
+
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Ajouter une année', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Annee', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'Num_annee',
+            'Libelle_année',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

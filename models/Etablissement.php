@@ -9,9 +9,9 @@ use Yii;
  *
  * @property int $Num_Etablissement
  * @property string $Ville
- * @property string $Region
+ * @property string $Région
  * @property string $Pays
- * @property int $Num_Classe
+ * @property string $Num_Classe
  *
  * @property Classe $numClasse
  */
@@ -31,10 +31,9 @@ class Etablissement extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Num_Etablissement', 'Ville', 'Region', 'Pays', 'Num_Classe'], 'required'],
-            [['Num_Etablissement', 'Num_Classe'], 'integer'],
-            [['Ville', 'Region', 'Pays'], 'string'],
-            [['Num_Etablissement'], 'unique'],
+            [['Ville', 'Région', 'Pays', 'Num_Classe'], 'required'],
+            [['Ville', 'Région', 'Pays'], 'string'],
+            [['Num_Classe'], 'string', 'max' => 50],
             [['Num_Classe'], 'exist', 'skipOnError' => true, 'targetClass' => Classe::className(), 'targetAttribute' => ['Num_Classe' => 'Num_Classe']],
         ];
     }
@@ -47,7 +46,7 @@ class Etablissement extends \yii\db\ActiveRecord
         return [
             'Num_Etablissement' => 'Num Etablissement',
             'Ville' => 'Ville',
-            'Region' => 'Region',
+            'Région' => 'Région',
             'Pays' => 'Pays',
             'Num_Classe' => 'Num Classe',
         ];

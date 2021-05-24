@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'Num_Eleve')->textInput() ?>
-
     <?= $form->field($model, 'Nom_Eleve')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'Prenom_Eleve')->textarea(['rows' => 6]) ?>
@@ -27,6 +25,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'Ville_Eleve')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'Code_Postal_Eleve')->textInput() ?>
+
+    <?= $form->field($model, 'Num_Classe')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

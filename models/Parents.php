@@ -10,12 +10,12 @@ use Yii;
  * @property int $Num_Parent
  * @property string $Nom_Parent
  * @property string $Prenom_Parent
- * @property int $Telephone_Parent
+ * @property string $Telephone_Parent
  * @property string $Rue_Parent
- * @property string $Ville_Parent
- * @property int $Code_Postal_Parent
+ * @property string $Localite_Parent
  *
- * @property EstResponsable[] $estResponsables
+ * @property Responsable[] $responsables
+ * @property Eleve[] $numEleves
  */
 class Parents extends \yii\db\ActiveRecord
 {
@@ -33,10 +33,9 @@ class Parents extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Num_Parent', 'Nom_Parent', 'Prenom_Parent', 'Telephone_Parent', 'Rue_Parent', 'Ville_Parent', 'Code_Postal_Parent'], 'required'],
-            [['Num_Parent', 'Telephone_Parent', 'Code_Postal_Parent'], 'integer'],
-            [['Nom_Parent', 'Prenom_Parent', 'Rue_Parent', 'Ville_Parent'], 'string'],
-            [['Num_Parent'], 'unique'],
+            [['Nom_Parent', 'Prenom_Parent', 'Telephone_Parent', 'Rue_Parent', 'Localite_Parent'], 'required'],
+            [['Nom_Parent', 'Prenom_Parent', 'Rue_Parent'], 'string'],
+            [['Telephone_Parent', 'Localite_Parent'], 'string', 'max' => 50],
         ];
     }
 
@@ -46,23 +45,32 @@ class Parents extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Num_Parent' => 'Numéro Parent',
-            'Nom_Parent' => 'Nom',
-            'Prenom_Parent' => 'Prénom',
-            'Telephone_Parent' => 'Telephone',
-            'Rue_Parent' => 'Rue',
-            'Ville_Parent' => 'Ville',
-            'Code_Postal_Parent' => 'Code Postal',
+            'Num_Parent' => 'Num Parent',
+            'Nom_Parent' => 'Nom Parent',
+            'Prenom_Parent' => 'Prenom Parent',
+            'Telephone_Parent' => 'Telephone Parent',
+            'Rue_Parent' => 'Rue Parent',
+            'Localite_Parent' => 'Localite Parent',
         ];
     }
 
     /**
-     * Gets query for [[EstResponsables]].
+     * Gets query for [[Responsables]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getEstResponsables()
+    public function getResponsables()
     {
-        return $this->hasMany(EstResponsable::className(), ['Num_parent' => 'Num_Parent']);
+        return $this->hasMany(Responsable::className(), ['Num_Parent' => 'Num_Parent']);
+    }
+
+    /**
+     * Gets query for [[NumEleves]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNumEleves()
+    {
+        return $this->hasMany(Eleve::className(), ['Num_eleve' => 'Num_Eleve'])->viaTable('responsable', ['Num_Parent' => 'Num_Parent']);
     }
 }

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Parents */
 
-$this->title = 'Créer un Parent';
+$this->title = 'Create Parents';
 $this->params['breadcrumbs'][] = ['label' => 'Parents', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -8,10 +8,10 @@ use Yii;
  * This is the model class for table "competence".
  *
  * @property int $Num_Competence
- * @property int $Libelle_Competence
+ * @property string $Libelle_Competence
  *
  * @property Obtient[] $obtients
- * @property SousDomaine[] $sousDomaines
+ * @property Sousdomaine[] $sousdomaines
  */
 class Competence extends \yii\db\ActiveRecord
 {
@@ -29,9 +29,8 @@ class Competence extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Num_Competence', 'Libelle_Competence'], 'required'],
-            [['Num_Competence', 'Libelle_Competence'], 'integer'],
-            [['Num_Competence'], 'unique'],
+            [['Libelle_Competence'], 'required'],
+            [['Libelle_Competence'], 'string'],
         ];
     }
 
@@ -41,8 +40,8 @@ class Competence extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Num_Competence' => 'Numéro de la compétence',
-            'Libelle_Competence' => 'Libellé de la compétence',
+            'Num_Competence' => 'Num Competence',
+            'Libelle_Competence' => 'Libelle Competence',
         ];
     }
 
@@ -57,12 +56,12 @@ class Competence extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[SousDomaines]].
+     * Gets query for [[Sousdomaines]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getSousDomaines()
+    public function getSousdomaines()
     {
-        return $this->hasMany(SousDomaine::className(), ['Num_Competence' => 'Num_Competence']);
+        return $this->hasMany(Sousdomaine::className(), ['Num_Competence' => 'Num_Competence']);
     }
 }
